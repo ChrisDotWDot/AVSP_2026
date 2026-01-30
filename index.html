@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVSP 2026 - Sydney, Australia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sunset-orange: #FF6B4A;
+            --sunset-pink: #FF8FA3;
+            --deep-purple: #4A5B7D;
+            --ocean-blue: #2C4870;
+            --sky-lavender: #B8A9D4;
+            --warm-cream: #FFF5ED;
+            --bridge-red: #E54B4B;
+            --text-dark: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(180deg, var(--warm-cream) 0%, #FFF 100%);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 1.5rem 1.8rem;
+            text-decoration: none;
+            color: var(--ocean-blue);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--sunset-orange), var(--bridge-red));
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--bridge-red);
+        }
+
+        nav a:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        nav a.active {
+            color: var(--bridge-red);
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 75px;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('AVSP2026.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.35;
+            filter: blur(1px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(180deg, rgba(255, 245, 237, 0.7) 0%, rgba(255, 255, 255, 0.85) 100%);
+        }
+
+        @keyframes gradientShift {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1100px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 300;
+            color: var(--ocean-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero h1 .year {
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--sunset-orange) 0%, var(--bridge-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--deep-purple);
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .conference-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            border: 1px solid rgba(74, 91, 125, 0.15);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(229, 75, 75, 0.15);
+            border-color: var(--bridge-red);
+        }
+
+        .detail-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--bridge-red);
+        }
+
+        .detail-text {
+            font-size: 1.05rem;
+            color: var(--ocean-blue);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--ocean-blue);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sunset-orange), transparent);
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid Layout for Info Sections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            padding: 2.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(74, 91, 125, 0.1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(229, 75, 75, 0.15);
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--bridge-red);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--deep-purple) 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Decorative Elements */
+        .arch-decoration {
+            position: fixed;
+            top: 0;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border: 2px solid var(--sky-lavender);
+            border-radius: 50%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .arch-decoration-2 {
+            position: fixed;
+            bottom: -300px;
+            left: -200px;
+            width: 700px;
+            height: 700px;
+            border: 2px solid var(--sunset-pink);
+            border-radius: 50%;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 1rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 3rem 1.5rem;
+            }
+
+            .conference-details {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .detail-item {
+                justify-content: center;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            section {
+                margin-bottom: 4rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section padding for fixed nav */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Elements -->
+    <div class="arch-decoration"></div>
+    <div class="arch-decoration-2"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">AVSP 2026</a></li>
+            <li><a href="#venue">Conference Venue</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#call">Call for Papers</a></li>
+            <li><a href="#dates">Important Dates</a></li>
+            <li><a href="#committees">Committees</a></li>
+            <li><a href="#speakers">Invited Speakers</a></li>
+            <li><a href="#registration">Registration</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>AVSP <span class="year">2026</span></h1>
+            <p class="subtitle">
+                The 16th International Conference on Auditory-Visual Speech Processing (AVSP2026) will be held in Sydney, Australia, October 2, 2026. AVSP is a satellite workshop of Interspeech 2026.
+            </p>
+            <div class="conference-details">
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span class="detail-text">Sydney, Australia</span>
+                </div>
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+                    </svg>
+                    <span class="detail-text">October 2, 2026</span>
+                </div>
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>
+                    </svg>
+                    <span class="detail-text">Interspeech Satellite</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About AVSP</h2>
+            <p class="content-text">
+                AVSP is a uniquely interdisciplinary conference, focusing on the effects of auditory and visual speech information on human perception, machine recognition, and human-machine interaction. AVSP conferences attract many researchers from various fields, such as psychology, computer engineering, neuroscience, linguistics, and robotic engineering.
+            </p>
+        </section>
+
+        <!-- Conference Venue -->
+        <section id="venue">
+            <h2>Conference Venue</h2>
+            <p class="content-text">
+                The conference will be held in the beautiful city of Sydney, Australia, known for its iconic landmarks, vibrant culture, and world-class research institutions. More details about the specific venue will be announced soon.
+            </p>
+        </section>
+
+        <!-- Program -->
+        <section id="program">
+            <h2>Program</h2>
+            <p class="content-text">
+                The conference program will feature keynote presentations, oral and poster sessions, and opportunities for networking with researchers from around the world. Detailed program information will be available closer to the conference date.
+            </p>
+        </section>
+
+        <!-- Call for Papers -->
+        <section id="call">
+            <h2>Call for Papers</h2>
+            <p class="content-text">
+                We invite submissions on all aspects of auditory-visual speech processing, including but not limited to:
+            </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Human Perception</h3>
+                    <p>Audiovisual speech perception, integration mechanisms, and multisensory processing</p>
+                </div>
+                <div class="info-card">
+                    <h3>Machine Recognition</h3>
+                    <p>Audio-visual speech recognition, multimodal learning, and deep learning approaches</p>
+                </div>
+                <div class="info-card">
+                    <h3>Neuroscience</h3>
+                    <p>Neural mechanisms, brain imaging studies, and cognitive processes</p>
+                </div>
+                <div class="info-card">
+                    <h3>Applications</h3>
+                    <p>Human-machine interaction, assistive technologies, and real-world systems</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Dates -->
+        <section id="dates">
+            <h2>Important Dates</h2>
+            <p class="content-text">
+                Key deadlines and dates for AVSP 2026 will be announced soon. Please check back regularly for updates.
+            </p>
+        </section>
+
+        <!-- Committees -->
+        <section id="committees">
+            <h2>Committees</h2>
+            <p class="content-text">
+                Information about the organizing committee, program committee, and advisory board will be announced shortly.
+            </p>
+        </section>
+
+        <!-- Invited Speakers -->
+        <section id="speakers">
+            <h2>Invited Speakers</h2>
+            <p class="content-text">
+                We are pleased to announce that distinguished researchers in the field of auditory-visual speech processing will be invited to present keynote talks. Speaker announcements will be made in the coming months.
+            </p>
+        </section>
+
+        <!-- Registration -->
+        <section id="registration">
+            <h2>Registration</h2>
+            <p class="content-text">
+                Registration details, including fees and procedures, will be available closer to the conference date. Early registration is encouraged to secure your spot at this premier interdisciplinary event.
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 AVSP Conference. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">16th International Conference on Auditory-Visual Speech Processing</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+
+                // Update active state
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
